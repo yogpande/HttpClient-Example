@@ -1,0 +1,93 @@
+<notifier-container></notifier-container>
+<div class="card">
+  <div class="header">
+    <h4 class="title">Manage City</h4>
+  </div>
+  <div class="content">
+    <hr/>
+    <div class="row">
+      <div class="col-md-4">
+        <form #cityForm="ngForm" (ngSubmit)="SaveData(cityForm); cityForm.reset();">
+          <input type="hidden" name="city.cityid" [(ngModel)]="city.cityid">
+
+          <div class="form-group" >
+            <label for="sname">Select State:</label>
+            <select name="city.stateid" #name="ngModel" 
+            class="form-control border-input" required 
+            [(ngModel)]="city.stateid" id="sname">
+              <option [ngValue]="null">Select State</option>
+              <option *ngFor="let state of states" 
+              [value]="state.stateid">{{state.statename}}</option>
+            </select>          
+          </div>          
+          <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+            State Name is required
+          </div>
+
+        
+
+          <div class="form-group">
+            <label for="cname">City Name:</label>
+            <input type="text" name="city.cityname"
+             #cname="ngModel" required [(ngModel)]="city.cityname" 
+            class="form-control border-input"
+              id="cname">
+          </div>
+          <div [hidden]="cname.valid || cname.pristine"
+           class="alert alert-danger">
+            City Name is required
+          </div>
+
+          <button type="submit" class="btn btn-info btn-fill btn-wd" 
+          [disabled]="!cityForm.form.valid || name.value==0">Save</button>
+        </form>
+      </div>
+
+      <div class="col-md-offset-2 col-md-6">
+        <b>View City List</b>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                City Name
+              </th>
+              <th>
+                State Name
+              </th>
+              <th>
+
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let city of cities;let i=index;">
+              <td>
+                {{i+1}}
+              </td>
+              <td>
+                {{city.cityname}}
+              </td>
+              <td>
+                {{city.statename}}
+              </td>
+              <td>
+                <a (click)="editCity(city)">
+                  <i class="btn btn-success ti-pencil-alt"> Edit</i>
+                </a> &nbsp;
+                <a (click)="deleteCity(city.cityid)">
+                  <i class="btn btn-danger ti-eraser"> Delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{cityForm.value | json}}

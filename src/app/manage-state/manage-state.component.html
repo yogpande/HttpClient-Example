@@ -1,0 +1,65 @@
+<notifier-container></notifier-container>
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Manage State</h4>
+            </div>
+            <div class="content">
+              <hr/>
+              <div class="row">
+                <div class="col-md-4">
+                    <form #stateForm="ngForm" (ngSubmit)="SaveData(stateForm); stateForm.reset();">
+                        <input type="hidden" name="state.stateid" [(ngModel)]="state.stateid">
+                        <div class="form-group">
+                          <label for="sname">State Name:</label>
+                          <input type="text" name="state.statename" #name="ngModel"
+                           required [(ngModel)]="state.statename" class="form-control border-input" id="sname">
+                        </div>
+                        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                          State Name is required
+                        </div>
+                        <button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!stateForm.form.valid">Save</button>
+                      </form>
+                </div>
+
+                <div class="col-md-offset-2 col-md-6">
+                  <b>View State List</b>
+                
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>
+                              ID
+                            </th>
+                            <th>
+                              State Name
+                            </th>
+                            <th width="48%">
+              
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let state of states;let i=index;">
+                            <td>
+                              {{i+1}}
+                            </td>
+                            <td>
+                              {{state.statename}}
+                            </td>
+                            <td>
+                              <a (click)="editState(state)">
+                                <i class="btn btn-success ti-pencil-alt"> Edit</i>
+                              </a> &nbsp;
+                              <a (click)="deleteState(state.stateid)">
+                            <i class="btn btn-danger ti-eraser"> Delete</i></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+              </div>
+            </div>
+            </div>
+            
+  
+

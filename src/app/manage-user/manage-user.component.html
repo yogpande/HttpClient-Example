@@ -1,0 +1,57 @@
+<form [formGroup]="userForm" (ngSubmit)="OnSubmit()">
+
+  <div class="form-group">
+    <label for="uname">User Name:</label>
+    <input type="text" required class="form-control border-input" formControlName="uname" 
+    id="uname">
+    <div [hidden]="userForm.controls.uname.valid || 
+    userForm.controls.uname.pristine" class="alert alert-danger">
+      Name is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="uemail">Email ID:</label>
+    <input type="text" required class="form-control border-input" formControlName="uemail" 
+    id="uemail">
+    <div [hidden]="userForm.controls.uemail.valid || 
+    userForm.controls.uemail.pristine" class="alert alert-danger">
+      Email ID is required
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="upass">Password:</label>
+    <input type="password" required class="form-control border-input" formControlName="upass"
+     id="upass">
+    <div [hidden]="userForm.controls.upass.valid || 
+    userForm.controls.upass.pristine" class="alert alert-danger">
+      Password is required
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="state">Select State:</label>
+    <select formControlName="usid" #sid class="form-control border-input" 
+    (change)= "LoadCities(sid.value)">
+      <option [ngValue]="null">Select State</option>
+      <option *ngFor="let state of states" 
+      [value]="state.stateid">{{state.statename}}</option>
+    </select>
+   
+  </div>  
+
+
+  <div class="form-group">
+    <label for="city">Select City:</label>
+    <select formControlName="ucid" class="form-control border-input">
+      <option [ngValue]="null">Select city</option>
+      <option *ngFor="let city of cities" 
+      [value]="city.cityid">{{city.cityname}}</option> 
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!userForm.valid" class="btn btn-success btn-fill btn-wd">Submit</button>
+</form>
