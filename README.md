@@ -2,26 +2,31 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+---------------- URL LIST FOR DEMO --------------------------------------------------------
 
-## Code scaffolding
+url:- http://mbproject.apphb.com/default/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+--------------------
+1.GetState
+2.GetCity
+3.GetCitybyState(int id)
+4.GetTechnology
+5.GetExamCategory
+6.GetProjectCategory
+7.GetQueAns(int id)
+8.GetProjects
+9.GetProjectByCompany(int id)
+10.PostExam(int eid, int uid, int mark)
+11.PostUser(int uid, string username, string email, string psw, string mobile, string qualification, int examcategory, string about)
+12.PostComapny(int companyid, string companyname, string email, string pass, string mobile, string desc, int cityid)
+13.GetCompany
+14.GetUser
+15.GetForum
+16.GetEmployement
+17.PostQuery(string que,string ans,int uid,int cid)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+mbproject.apphb.com
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
